@@ -167,5 +167,4 @@ In effect this is a nameserver-specific version of gethostbyname() but returns a
 
 ## More Information
 
-The technical documentation can be found here
-<https://github.com/symplely/dns/wiki/DNS-Query-API-Technical-Docs>
+The technical documentation can be found [here](https://github.com/symplely/dns/blob/master/DNSQueryAPITechnicalDocs.md)
