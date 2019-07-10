@@ -1,6 +1,6 @@
 <?php
 
-namespace PurplePixie\PhpDns;
+namespace Async\Dns;
 
 /**
  * This file is the PurplePixie PHP DNS Types Class
@@ -22,7 +22,7 @@ namespace PurplePixie\PhpDns;
  *
  * For more information see www.purplepixie.org/phpdns
  */
-class DNSTypes
+class Types
 {
     private $types = array(
         1     => 'A', // RFC 1035 (Address Record)

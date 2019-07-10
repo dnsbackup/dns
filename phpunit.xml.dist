@@ -10,14 +10,14 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Phpdns Test Suite">
+        <testsuite name="DNS Test Suite">
             <directory suffix=".php">tests/</directory>
         </testsuite>
     </testsuites>
 
     <filter>
         <whitelist>
-            <directory suffix=".php">src/</directory>
+            <directory suffix=".php">dns/</directory>
         </whitelist>
     </filter>
 	

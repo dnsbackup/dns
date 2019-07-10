@@ -1,50 +1,51 @@
 <?php
-use PHPUnit\Framework\TestCase;
 
-use PurplePixie\PhpDns\DNSQuery;
+use Async\Dns\Query;
+
+use PHPUnit\Framework\TestCase;
 
 class DNSTest extends TestCase
 {
 	/**
-	 * @covers \PurplePixie\PhpDns\DNSQuery::__construct
+	 * @covers \Async\Dns\Query::__construct
 	 */
 	public function testConstructor()
 	{
-		$d = new DNSQuery("127.0.0.1");
-		$this->assertInstanceOf('PurplePixie\\PhpDns\\DNSQuery', $d);
+		$d = new Query("127.0.0.1");
+		$this->assertInstanceOf('Async\\Dns\\Query', $d);
 	}
 
 	/**
-	 * @covers \PurplePixie\PhpDns\DNSQuery::__construct
+	 * @covers \Async\Dns\Query::__construct
 	 */
 	public function testConstructorNoServer()
 	{
         $this->expectException(\InvalidArgumentException::class);
-		$d = new DNSQuery();
+		$d = new Query();
     }
     
 	/**
-	 * @covers \PurplePixie\PhpDns\DNSResult::__construct
-	 * @covers \PurplePixie\PhpDns\DNSQuery::query
-	 * @covers \PurplePixie\PhpDns\DNSAnswer::count
-	 * @covers \PurplePixie\PhpDns\DNSResult::getData
-	 * @covers \PurplePixie\PhpDns\DNSResult::getType
-	 * @covers \PurplePixie\PhpDns\DNSResult::getTypeId
-	 * @covers \PurplePixie\PhpDns\DNSResult::getString
-	 * @covers \PurplePixie\PhpDns\DNSResult::getExtras
+	 * @covers \Async\Dns\Result::__construct
+	 * @covers \Async\Dns\Query::query
+	 * @covers \Async\Dns\Answer::count
+	 * @covers \Async\Dns\Result::getData
+	 * @covers \Async\Dns\Result::getType
+	 * @covers \Async\Dns\Result::getTypeId
+	 * @covers \Async\Dns\Result::getString
+	 * @covers \Async\Dns\Result::getExtras
 	 */
-	public function testDNSQueryAndDNSAnswer()
+	public function testQueryAndAnswer()
 	{
         $dns_server = "8.8.8.8"; // Our DNS Server
 
-        $dns_query = new DNSQuery($dns_server); // create DNS Query object - there are other options we could pass here
-		$this->assertInstanceOf('PurplePixie\\PhpDns\\DNSQuery', $dns_query);
+        $dns_query = new Query($dns_server); // create  Query object - there are other options we could pass here
+		$this->assertInstanceOf('PurplePixie\\PhpDns\\Query', $dns_query);
 
         $question = "msn.com"; // the question we will ask
         $type = "A"; // the type of response(s) we want for this question
 
         $result = $dns_query->query($question, $type); // do the query
-		$this->assertInstanceOf('PurplePixie\\PhpDns\\DNSAnswer', $result);
+		$this->assertInstanceOf('PurplePixie\\PhpDns\\Answer', $result);
 
         //Process Results
         $count = $result->count(); // number of results returned
@@ -62,15 +63,15 @@ class DNSTest extends TestCase
     }
 
 	/**
-	 * @covers \PurplePixie\PhpDns\DNSQuery::setError
-	 * @covers \PurplePixie\PhpDns\DNSQuery::hasError
-	 * @covers \PurplePixie\PhpDns\DNSQuery::getLastError
+	 * @covers \Async\Dns\Query::setError
+	 * @covers \Async\Dns\Query::hasError
+	 * @covers \Async\Dns\Query::getLastError
 	 */
-	public function testDNSQueryAndDNSAnswerErrorServer()
+	public function testQueryAndAnswerErrorServer()
 	{
         $dns_server = "127.0.0.1"; // Our DNS Server
 
-        $dns_query = new DNSQuery($dns_server);
+        $dns_query = new Query($dns_server);
         $question = "msn.com";
         $type = "A";
 
@@ -84,13 +85,13 @@ class DNSTest extends TestCase
 	}
 
 	/**
-	 * @covers \PurplePixie\PhpDns\DNSTypes::getByName
+	 * @covers \Async\Dns\Types::getByName
 	 */
-	public function testDNSQueryAndDNSAnswerErrorType()
+	public function testQueryAndAnswerErrorType()
 	{
         $dns_server = "1.1.1.1"; // Our DNS Server
 
-        $dns_query = new DNSQuery($dns_server);
+        $dns_query = new Query($dns_server);
         $question = "msn.com";
         $type = "BAD";
 
@@ -102,11 +103,11 @@ class DNSTest extends TestCase
 		}
 	}
 
-	public function testDNSQueryAndDNSAnswerErrorOpen()
+	public function testQueryAndAnswerErrorOpen()
 	{
         $dns_server = "tcp:://127.1.1.1"; // Our DNS Server
 
-        $dns_query = new DNSQuery($dns_server, 53, 5, false);
+        $dns_query = new Query($dns_server, 53, 5, false);
         $question = "msn.com";
         $type = "A";
 

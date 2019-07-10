@@ -1,6 +1,6 @@
 <?php
 
-namespace PurplePixie\PhpDns;
+namespace Async\Dns;
 
 /**
  * This file is the PurplePixie PHP DNS Query Class
@@ -22,7 +22,7 @@ namespace PurplePixie\PhpDns;
  *
  * For more information see www.purplepixie.org/phpdns
  */
-class DNSQuery
+class Query
 {
     /**
      * @var string
@@ -55,7 +55,7 @@ class DNSQuery
     private $binaryDebug = false;
 
     /**
-     * @var DNSTypes
+     * @var Types
      */
     private $types;
 
@@ -85,12 +85,12 @@ class DNSQuery
     private $responseCounter = 0;
 
     /**
-     * @var DNSAnswer
+     * @var Answer
      */
     private $lastNameservers;
 
     /**
-     * @var DNSAnswer
+     * @var Answer
      */
     private $lastAdditional;
 
@@ -124,19 +124,19 @@ class DNSQuery
         $this->debug = $debug;
         $this->binaryDebug = $binaryDebug;
 
-        $this->types = new DNSTypes();
+        $this->types = new Types();
 
-        $this->debug('DNSQuery Class Initialised');
+        $this->debug('Query Class Initialized');
     }
 
     /**
      * @param string $question
      * @param string $type
      *
-     * @return DNSAnswer
+     * @return Answer
      * @throws \Exception
      */
-    public function query($question, $type = 'A'): DNSAnswer
+    public function query($question, $type = 'A'): Answer
     {
         $this->clearError();
 
@@ -303,7 +303,7 @@ class DNSQuery
 
         $this->debug('Query Returned ' . $answers . ' Answers');
 
-        $dns_answer = new DNSAnswer();
+        $dns_answer = new Answer();
 
         // Deal with the header question data
         if ($this->header['qdcount'] > 0) {
@@ -324,27 +324,27 @@ class DNSQuery
         for ($a = 0; $a < $this->header['ancount']; $a++) {
             $record = $this->readRecord();
 
-            $dns_answer->addResult(new DNSResult($record['header']['type'], $record['typeId'],
+            $dns_answer->addResult(new Result($record['header']['type'], $record['typeId'],
                 $record['header']['class'], $record['header']['ttl'], $record['data'], $record['domain'],
                 $record['string'], $record['extras']));
         }
 
-        $this->lastNameservers = new DNSAnswer();
+        $this->lastNameservers = new Answer();
 
         for ($a = 0; $a < $this->header['nscount']; $a++) {
             $record = $this->readRecord();
 
-            $this->lastNameservers->addResult(new DNSResult($record['header']['type'], $record['typeId'],
+            $this->lastNameservers->addResult(new Result($record['header']['type'], $record['typeId'],
                 $record['header']['class'], $record['header']['ttl'], $record['data'], $record['domain'],
                 $record['string'], $record['extras']));
         }
 
-        $this->lastAdditional = new DNSAnswer();
+        $this->lastAdditional = new Answer();
 
         for ($a = 0; $a < $this->header['arcount']; $a++) {
             $record = $this->readRecord();
 
-            $this->lastAdditional->addResult(new DNSResult($record['header']['type'], $record['typeId'],
+            $this->lastAdditional->addResult(new Result($record['header']['type'], $record['typeId'],
                 $record['header']['class'], $record['header']['ttl'], $record['data'], $record['domain'],
                 $record['string'], $record['extras']));
         }
@@ -421,7 +421,7 @@ class DNSQuery
     }
 
     /**
-     * @return DNSAnswer
+     * @return Answer
      */
     public function getLastNameservers()
     {
@@ -429,7 +429,7 @@ class DNSQuery
     }
 
     /**
-     * @return DNSAnswer
+     * @return Answer
      */
     public function getLastAdditional()
     {

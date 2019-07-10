@@ -1,6 +1,6 @@
 <?php
 
-namespace PurplePixie\PhpDns;
+namespace Async\Dns;
 
 /**
  * This file is the PurplePixie PHP DNS Result Class
@@ -22,7 +22,7 @@ namespace PurplePixie\PhpDns;
  *
  * For more information see www.purplepixie.org/phpdns
  */
-class DNSResult
+class Result
 {
     /**
      * @var string

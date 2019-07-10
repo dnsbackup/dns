@@ -1,12 +1,16 @@
 {
-  "name": "forked/phpdns",
+  "name": "symplely/dns",
   "authors": [
     {
       "name": "David Cutting",
       "email": "dcutting@purplepixie.org"
+    },
+    {
+      "name": "Lawrence Stubbs",
+      "email": "lstubbs@techno.express"
     }
   ],
-  "description": "PHP DNS Direct Query Module. A updated fork of purplepixie/phpdns",
+  "description": "Async DNS Direct Query Module.",
   "license": "LGPL-3.0-or-later",
   "require": {
     "php": ">=5.6"
@@ -16,15 +20,15 @@
   },
   "autoload": {
       "psr-4": {
-          "PurplePixie\\PhpDns\\": "src/"
+          "Async\\Dns\\": "dns/"
       }
   },
   "autoload-dev": {
       "psr-4": {
-          "PurplePixie\\Tests\\": "tests/"
+          "Async\\Tests\\": "tests/"
       }
   },
   "scripts": {
-      "test": "phpunit --bootstrap vendor/autoload.php tests"
+      "test": "vendor/bin/phpunit --bootstrap vendor/autoload.php tests"
   }
 }

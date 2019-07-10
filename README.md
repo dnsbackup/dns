@@ -1,8 +1,8 @@
 ﻿# phpdns
 
-[![Build Status](https://travis-ci.org/techno-express/phpdns.svg?branch=master)](https://travis-ci.org/techno-express/phpdns)
+[![Build Status](https://travis-ci.org/symplely/dns.svg?branch=master)](https://travis-ci.org/symplely/dns)
 
-> It seems original authors [purplepixie/phpdns](https://github.com/purplepixie/phpdns) has left there **repo** unmaintained for over 3 years now.
+**This package is under development, the asynchronous parts has not been implemented or added.**
 
 The PHP DNS Query is a GPL set of PHP classes providing a direct domain name service API. Originally developed to be a testing module for the [FreeNATS](http://www.purplepixie.org/freenats/) network monitor I decided to package it up as a standalone API as well.
 
@@ -10,13 +10,13 @@ Although there are plenty of other DNS classes/clients out there I found them to
 
 ## Usage Guide
 
-### Using the DNS Query API
+### Using the Query API
 
 You can use the DNS query API from within PHP (version 4 or later) and
 it requires no special raw socket permissions so should operate
 correctly in most environments.
 
-To use the API you must create a DNS Query object (with a DNS server
+To use the API you must create a Query object (with a DNS server
 hostname/IP and other optional parameters), perform a query (either a
 full query where you specify the type of result or a smart A lookup
 <#SmartALookup>) and deal with the answer.
@@ -33,12 +33,12 @@ lookup
 // A simple DNS query example
 require("vendor/autoload.php"); // Require API Source
 
-use PurplePixie\PhpDns\DNSQuery;
+use Async\Dns\DNSQuery;
 
 // Your DNS Server
 $dns_server = "ns.somehost.com"; 
 
-// create DNS Query object - there are other options we could pass here
+// create Query object - there are other options we could pass here
 $dns_query = new DNSQuery($dns_server);
 
 // the question we will ask
@@ -170,8 +170,4 @@ In effect this is a nameserver-specific version of gethostbyname() but returns a
 ## More Information
 
 The technical documentation can be found here
-<https://github.com/techno-express/phpdns/wiki/DNS-Query-API-Technical-Docs>
-
-------------------------------------------------------------------------
-[phpdns](http://www.purplepixie.org/phpdns) © Copyright 2008-2014
-[PurplePixie Systems](http://www.purplepixie.org), all rights reserved, licensed under the [GNU](http://www.gnu.org/) [GPL](http://www.gnu.org/licences/gpl.html). Bugs, errata and comments should be posted to the [issues](https://github.com/purplepixie/phpdns/issues) tracker.
+<https://github.com/symplely/dns/wiki/DNS-Query-API-Technical-Docs>

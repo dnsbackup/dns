@@ -1,6 +1,6 @@
 <?php
 
-namespace PurplePixie\PhpDns;
+namespace Async\Dns;
 
 /**
  * This file is the PurplePixie PHP DNS Answer Class
@@ -22,17 +22,17 @@ namespace PurplePixie\PhpDns;
  *
  * For more information see www.purplepixie.org/phpdns
  */
-class DNSAnswer implements \Countable, \Iterator
+class Answer implements \Countable, \Iterator
 {
     /**
-     * @var DNSResult[]
+     * @var Result[]
      */
     private $results = [];
 
     /**
-     * @param DNSResult $result
+     * @param Result $result
      */
-    public function addResult(DNSResult $result)
+    public function addResult(Result $result)
     {
         $this->results[] = $result;
     }
@@ -50,7 +50,7 @@ class DNSAnswer implements \Countable, \Iterator
     /**
      * Iterator
      *
-     * @return DNSResult
+     * @return Result
      */
     public function current()
     {
