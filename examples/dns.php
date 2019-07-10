@@ -24,10 +24,10 @@ For more information see www.purplepixie.org/phpdns
 // classes:
 use PurplePixie\PhpDns\DNSQuery;
 
-require_once __DIR__ . '/src/PurplePixie/PhpDns/DNSAnswer.php';
-require_once __DIR__ . '/src/PurplePixie/PhpDns/DNSQuery.php';
-require_once __DIR__ . '/src/PurplePixie/PhpDns/DNSResult.php';
-require_once __DIR__ . '/src/PurplePixie/PhpDns/DNSTypes.php';
+require_once __DIR__ . '/src/DNSAnswer.php';
+require_once __DIR__ . '/src/DNSQuery.php';
+require_once __DIR__ . '/src/DNSResult.php';
+require_once __DIR__ . '/src/DNSTypes.php';
 
 // Here is the legacy way (single file to load classes) BUT must
 // now also have the namespace line:
@@ -75,14 +75,14 @@ echo "Querying: ".$question." -t ".$type." @".$server."\n";
 $result=$query->query($question,$type);
 
 if ($query->hasError()) {
-    echo "Query Error: " . $query->getLasterror() . "\n";
+    echo "Query Error: " . $query->getLastError() . "\n";
     exit();
 }
 
 echo "Returned ".count($result)." Answers\n";
 
 foreach ($result as $index => $record) {
-    echo $index . ". " . $record->getTypeid() . "(" . $record->getType() . ") => " . $record->getData() . " [";
+    echo $index . ". " . $record->getTypeId() . "(" . $record->getType() . ") => " . $record->getData() . " [";
     echo $record->getString();
     echo "]\n";
 

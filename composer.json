@@ -1,24 +1,30 @@
 {
-  "name": "purplepixie/phpdns",
+  "name": "forked/phpdns",
   "authors": [
     {
       "name": "David Cutting",
       "email": "dcutting@purplepixie.org"
     }
   ],
-  "description": "PHP DNS Direct Query Module",
-  "license": "GPLv3",
-  "autoload": {
-    "psr-0": {
-      "PurplePixie": "src/"
-    }
-  },
+  "description": "PHP DNS Direct Query Module. A updated fork of purplepixie/phpdns",
+  "license": "LGPL-3.0-or-later",
   "require": {
-    "php": ">=5.3.3"
+    "php": ">=5.6"
   },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "2.0-dev"
-    }
+  "require-dev": {
+      "phpunit/phpunit": ">5.7"
+  },
+  "autoload": {
+      "psr-4": {
+          "PurplePixie\\PhpDns\\": "src/"
+      }
+  },
+  "autoload-dev": {
+      "psr-4": {
+          "PurplePixie\\Tests\\": "tests/"
+      }
+  },
+  "scripts": {
+      "test": "phpunit --bootstrap vendor/autoload.php tests"
   }
 }
