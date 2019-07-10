@@ -22,9 +22,9 @@ full query where you specify the type of result or a smart A lookup
 <#SmartALookup>) and deal with the answer.
 
 The answer will either be false if an error occured (see the code below
-for an example error trap) or a DNSAnswer object containing a "count"
+for an example error trap) or a Answer object containing a "count"
 property (the number of records returned as answers) and an array of
-DNSResult objects containing each answer given to the query.
+Result objects containing each answer given to the query.
 
 The following is an example script to perform an A record (IP address)
 lookup
@@ -33,13 +33,13 @@ lookup
 // A simple DNS query example
 require("vendor/autoload.php"); // Require API Source
 
-use Async\Dns\DNSQuery;
+use Async\Dns\Query;
 
 // Your DNS Server
 $dns_server = "ns.somehost.com"; 
 
 // create Query object - there are other options we could pass here
-$dns_query = new DNSQuery($dns_server);
+$dns_query = new Query($dns_server);
 
 // the question we will ask
 $question = "www.somehost.com";
@@ -118,11 +118,11 @@ decimal record type in "type".
 
 ### Answer Results
 
-If a query succeeds it returns a DNSAnswer object containing a counter
+If a query succeeds it returns a Answer object containing a counter
 property "count" indicating the number of answer records returned and an
-array of DNSResult objects containing each of these records in turn.
+array of Result objects containing each of these records in turn.
 
-The DNSAnswer object breaks down as follows:
+The Answer object breaks down as follows:
 $answer->count 	Number of answer records contained
 $answer->results[x]->typeid 	Textual record type ID (A, MX, CNAME etc)
 $answer->results[x]->type 	Numeric record type (decimal)
@@ -137,7 +137,7 @@ $answer->results[x]->extras 	Type-specific array of extra fields (i.e.
 ### Type-specific Extras
 
 Some result types have extended extra information which will be in array
-form in the "extras" property of a DNSResult object.
+form in the "extras" property of a Result object.
 
 MX record types have the decimal mail exchange priority in extas['level']
 
@@ -153,11 +153,11 @@ extras['minttl'] - domain mimumum time-to-live (ttl)
 
 Because doing an A lookup won't always return an IP address and
 sometimes you're just after an IP address (not potentially a list of
-them and aliases etc) the DNSQuery class provides the SmartALookup()
+them and aliases etc) the Query class provides the SmartALookup()
 method.
 
 This function simply takes a hostname and returns an IP address or a
-null string if lookup failed (you can then check the DNSQuery lasterror
+null string if lookup failed (you can then check the Query lasterror
 property to see if the query actually failed or just returned no results).
 
 If the result data contains an IP address it will be returned (first
