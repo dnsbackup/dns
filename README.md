@@ -1,18 +1,16 @@
-﻿# phpdns
+﻿# dns
 
 [![Build Status](https://travis-ci.org/symplely/dns.svg?branch=master)](https://travis-ci.org/symplely/dns)
 
 **This package is under development, the asynchronous parts has not been implemented or added.**
 
-The PHP DNS Query is a GPL set of PHP classes providing a direct domain name service API. Originally developed to be a testing module for the [FreeNATS](http://www.purplepixie.org/freenats/) network monitor I decided to package it up as a standalone API as well.
-
-Although there are plenty of other DNS classes/clients out there I found them to either be too overblown or actually non-functional. This API is intended to be a half-way house offering direct to-server queries, the ability to process the response in detail but still with a simple interface for the programmer.
+This API is intended to be a half-way house offering direct to-server queries, the ability to process the response in detail but still with a simple interface for the programmer.
 
 ## Usage Guide
 
 ### Using the Query API
 
-You can use the DNS query API from within PHP (version 4 or later) and
+You can use the DNS query API from within PHP (version 7 or later) and
 it requires no special raw socket permissions so should operate
 correctly in most environments.
 
