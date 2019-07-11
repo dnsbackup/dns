@@ -6,34 +6,18 @@ use PHPUnit\Framework\TestCase;
 
 class DNSTest extends TestCase
 {
-	/**
-	 * @covers \Async\Dns\Query::__construct
-	 */
 	public function testConstructor()
 	{
 		$d = new Query("127.0.0.1");
 		$this->assertInstanceOf('Async\Dns\Query', $d);
 	}
 
-	/**
-	 * @covers \Async\Dns\Query::__construct
-	 */
 	public function testConstructorNoServer()
 	{
         $this->expectException(\InvalidArgumentException::class);
 		$d = new Query();
     }
     
-	/**
-	 * @covers \Async\Dns\Result::__construct
-	 * @covers \Async\Dns\Query::query
-	 * @covers \Async\Dns\Answer::count
-	 * @covers \Async\Dns\Result::getData
-	 * @covers \Async\Dns\Result::getType
-	 * @covers \Async\Dns\Result::getTypeId
-	 * @covers \Async\Dns\Result::getString
-	 * @covers \Async\Dns\Result::getExtras
-	 */
 	public function testQueryAndAnswer()
 	{
         $dns_server = "8.8.8.8"; // Our DNS Server
@@ -62,11 +46,6 @@ class DNSTest extends TestCase
         }
     }
 
-	/**
-	 * @covers \Async\Dns\Query::setError
-	 * @covers \Async\Dns\Query::hasError
-	 * @covers \Async\Dns\Query::getLastError
-	 */
 	public function testQueryAndAnswerErrorServer()
 	{
         $dns_server = "127.0.0.1"; // Our DNS Server
@@ -84,9 +63,6 @@ class DNSTest extends TestCase
 		}
 	}
 
-	/**
-	 * @covers \Async\Dns\Types::getByName
-	 */
 	public function testQueryAndAnswerErrorType()
 	{
         $dns_server = "1.1.1.1"; // Our DNS Server
