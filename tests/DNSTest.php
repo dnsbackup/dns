@@ -12,7 +12,7 @@ class DNSTest extends TestCase
 	public function testConstructor()
 	{
 		$d = new Query("127.0.0.1");
-		$this->assertInstanceOf('Async\\Dns\\Query', $d);
+		$this->assertInstanceOf('Async\Dns\Query', $d);
 	}
 
 	/**
@@ -39,13 +39,13 @@ class DNSTest extends TestCase
         $dns_server = "8.8.8.8"; // Our DNS Server
 
         $dns_query = new Query($dns_server); // create  Query object - there are other options we could pass here
-		$this->assertInstanceOf('PurplePixie\\PhpDns\\Query', $dns_query);
+		$this->assertInstanceOf('Async\Dns\Query', $dns_query);
 
         $question = "msn.com"; // the question we will ask
         $type = "A"; // the type of response(s) we want for this question
 
         $result = $dns_query->query($question, $type); // do the query
-		$this->assertInstanceOf('PurplePixie\\PhpDns\\Answer', $result);
+		$this->assertInstanceOf('Async\Dns\Answer', $result);
 
         //Process Results
         $count = $result->count(); // number of results returned

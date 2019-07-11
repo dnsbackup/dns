@@ -1,6 +1,6 @@
 ﻿# dns
 
-[![Build Status](https://travis-ci.org/symplely/dns.svg?branch=master)](https://travis-ci.org/symplely/dns)
+[![Build Status](https://travis-ci.org/symplely/dns.svg?branch=master)](https://travis-ci.org/symplely/dns)[![codecov](https://codecov.io/gh/symplely/dns/branch/master/graph/badge.svg)](https://codecov.io/gh/symplely/dns)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2e9c2dda71074eba98deee1f9a650846)](https://www.codacy.com/app/techno-express/dns?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=symplely/dns&amp;utm_campaign=Badge_Grade)
 
 **This package is under development, the asynchronous parts has not been implemented or added.**
 
