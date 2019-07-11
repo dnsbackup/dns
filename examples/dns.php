@@ -22,12 +22,11 @@ For more information see www.purplepixie.org/phpdns
 
 // Below is the recommended way to load PHP DNS, with individual
 // classes:
-use PurplePixie\PhpDns\DNSQuery;
+include 'vendor/autoload.php';
 
-require_once __DIR__ . '/src/DNSAnswer.php';
-require_once __DIR__ . '/src/DNSQuery.php';
-require_once __DIR__ . '/src/DNSResult.php';
-require_once __DIR__ . '/src/DNSTypes.php';
+use Async\Dns\Answer;
+use Async\Dns\Query;
+use Async\Dns\Types;
 
 // Here is the legacy way (single file to load classes) BUT must
 // now also have the namespace line:
@@ -68,7 +67,7 @@ if ($argc>1) {
     }
 }
 
-$query=new DNSQuery($server,$port,$timeout,$udp,$debug,$binarydebug);
+$query=new Query($server,$port,$timeout,$udp,$debug,$binarydebug);
 
 echo "Querying: ".$question." -t ".$type." @".$server."\n";
 

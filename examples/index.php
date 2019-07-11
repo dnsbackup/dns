@@ -23,14 +23,11 @@ For more information see www.purplepixie.org/phpdns
 
 // Below is the recommended way to load PHP DNS, with individual
 // classes:
-use PurplePixie\PhpDns\DNSAnswer;
-use PurplePixie\PhpDns\DNSQuery;
-use PurplePixie\PhpDns\DNSTypes;
+include 'vendor/autoload.php';
 
-require_once __DIR__ . '/src/DNSAnswer.php';
-require_once __DIR__ . '/src/DNSQuery.php';
-require_once __DIR__ . '/src/DNSResult.php';
-require_once __DIR__ . '/src/DNSTypes.php';
+use Async\Dns\Answer;
+use Async\Dns\Query;
+use Async\Dns\Types;
 
 // Here is the legacy way (single file to load classes) BUT must
 // now also have the namespace line:
@@ -56,7 +53,7 @@ echo "<input type=hidden name=doquery value=1>";
 echo "Query <input type=text name=question size=50 value=\"" . $question . "\"> ";
 echo "<select name=type>";
 echo "<option value=" . $type . ">" . $type . "</option>";
-$types = new DNSTypes();
+$types = new Types();
 $types2 = $types->getAllTypeNamesSorted();
 foreach ($types2 as $name) {
     echo "<option value=\"$name\">$name</option>";
@@ -102,7 +99,7 @@ echo "<input type=submit value=\"Perform DNS Query\"><br>";
 if (isset($_REQUEST['doquery'])) {
     echo "<pre>";
 
-    $query = new DNSQuery($server, $port, $timeout, $udp, $debug, $binarydebug);
+    $query = new Query($server, $port, $timeout, $udp, $debug, $binarydebug);
 
     if ($type == "SMARTA") {
         echo "Smart A Lookup for " . $question . "\n\n";
@@ -136,7 +133,7 @@ if (isset($_REQUEST['doquery'])) {
     echo "</pre>";
 }
 
-function ShowSection(DNSAnswer $result)
+function ShowSection(Answer $result)
 {
     global $extendanswer;
 
