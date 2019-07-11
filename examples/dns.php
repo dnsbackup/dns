@@ -28,13 +28,6 @@ use Async\Dns\Answer;
 use Async\Dns\Query;
 use Async\Dns\Types;
 
-// Here is the legacy way (single file to load classes) BUT must
-// now also have the namespace line:
-/*
-require_once("dns.inc.php");
-use PurplePixie\PhpDns\DNSQuery;
-*/
-
 $server="127.0.0.1";
 $port=53;
 $timeout=60;
@@ -71,11 +64,13 @@ $query=new Query($server,$port,$timeout,$udp,$debug,$binarydebug);
 
 echo "Querying: ".$question." -t ".$type." @".$server."\n";
 
-$result=$query->query($question,$type);
-
-if ($query->hasError()) {
-    echo "Query Error: " . $query->getLastError() . "\n";
-    exit();
+try {
+    $result = $query->query($question,$type);
+} catch (\Exception $e) {    
+    if ($query->hasError()) {
+        echo "Query Error: " . $query->getLastError() . "\n";
+        exit();
+    }
 }
 
 echo "Returned ".count($result)." Answers\n";
