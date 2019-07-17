@@ -1,6 +1,6 @@
 ﻿# dns
 
-[![Build Status](https://travis-ci.org/symplely/dns.svg?branch=master)](https://travis-ci.org/symplely/dns)[![codecov](https://codecov.io/gh/symplely/dns/branch/master/graph/badge.svg)](https://codecov.io/gh/symplely/dns)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2e9c2dda71074eba98deee1f9a650846)](https://www.codacy.com/app/techno-express/dns?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=symplely/dns&amp;utm_campaign=Badge_Grade)
+[![Build Status](https://travis-ci.org/symplely/dns.svg?branch=master)](https://travis-ci.org/symplely/dns)[![codecov](https://codecov.io/gh/symplely/dns/branch/master/graph/badge.svg)](https://codecov.io/gh/symplely/dns)[![Codacy Badge](https://api.codacy.com/project/badge/Grade/2e9c2dda71074eba98deee1f9a650846)](https://www.codacy.com/app/techno-express/dns?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=symplely/dns&amp;utm_campaign=Badge_Grade)[![Maintainability](https://api.codeclimate.com/v1/badges/c7c9573e85c36af68894/maintainability)](https://codeclimate.com/github/symplely/dns/maintainability)
 
 **This package is under development, the asynchronous parts has not been implemented or added.**
 
